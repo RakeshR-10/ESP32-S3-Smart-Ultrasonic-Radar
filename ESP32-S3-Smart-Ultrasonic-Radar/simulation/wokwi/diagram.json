@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "author": "Smart Ultrasonic Radar System",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": 20, "left": 220, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "sonar", "top": -40, "left": -160, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo", "top": 220, "left": -150, "attrs": {} },
+    { "type": "wokwi-ili9341", "id": "tft", "top": -160, "left": 340, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:7", "sonar:TRIG", "green", [] ],
+    [ "esp:16", "sonar:ECHO", "blue", [] ],
+    [ "esp:5V", "sonar:VCC", "red", [] ],
+    [ "esp:GND.1", "sonar:GND", "black", [] ],
+    [ "esp:17", "servo:PWM", "orange", [] ],
+    [ "esp:5V", "servo:V+", "red", [] ],
+    [ "esp:GND.2", "servo:GND", "black", [] ],
+    [ "esp:4", "tft:CS", "green", [] ],
+    [ "esp:15", "tft:D/C", "green", [] ],
+    [ "esp:9", "tft:RST", "green", [] ],
+    [ "esp:11", "tft:MOSI", "green", [] ],
+    [ "esp:12", "tft:SCK", "green", [] ],
+    [ "esp:3V3.1", "tft:VCC", "red", [] ],
+    [ "esp:GND.3", "tft:GND", "black", [] ],
+    [ "esp:3V3.2", "tft:LED", "red", [] ],
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ]
+  ],
+  "dependencies": {
+    "adafruit/Adafruit GFX Library": "1.11.11",
+    "adafruit/Adafruit ILI9341": "1.6.2",
+    "madhephaestus/ESP32Servo": "3.0.5"
+  }
+}
